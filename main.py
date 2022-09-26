@@ -10,3 +10,8 @@ while True:
             pygame.quit()
             sys.exit()
     pygame.display.update()
+
+
+print ("epic")
+print ("cool")
+print("Hello")
