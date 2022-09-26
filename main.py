@@ -14,4 +14,4 @@ while True:
 
 print ("epic")
 print ("cool")
-print("Hello")
+print("Hello.")
