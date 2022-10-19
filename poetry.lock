@@ -73,6 +73,23 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "pygame-menu"
+version = "4.2.8"
+description = "A menu for pygame. Simple, and easy to use"
+category = "main"
+optional = false
+python-versions = ">=3.6, <4"
+
+[package.dependencies]
+pygame = ">=1.9.3"
+pyperclip = "*"
+typing-extensions = "*"
+
+[package.extras]
+docs = ["pygame (>=1.9.3)", "pyperclip", "typing-extensions", "sphinx", "sphinx-autodoc-typehints (>=1.2.0)", "sphinx-rtd-theme"]
+test = ["pygame (>=1.9.3)", "pyperclip", "typing-extensions", "codecov", "nose"]
+
+[[package]]
 name = "pyparsing"
 version = "3.0.9"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
@@ -82,6 +99,14 @@ python-versions = ">=3.6.8"
 
 [package.extras]
 diagrams = ["railroad-diagrams", "jinja2"]
+
+[[package]]
+name = "pyperclip"
+version = "1.8.2"
+description = "A cross-platform clipboard module for Python. (Only handles plain text for now.)"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "python-lsp-jsonrpc"
@@ -179,6 +204,14 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "typing-extensions"
+version = "4.4.0"
+description = "Backported and Experimental Type Hints for Python 3.7+"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "ujson"
 version = "5.4.0"
 description = "Ultra fast JSON encoder and decoder for Python"
@@ -205,7 +238,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8.0,<3.9"
-content-hash = "11d05f87d03e07e8321dd036538c8c9b4d802df8d02d9b1f460ecd66a7fa06f2"
+content-hash = "c58d31b621924247c688023ac19369e3a7def84b91cc6600f7d810dc5f1d0dc5"
 
 [metadata.files]
 debugpy = []
@@ -215,13 +248,16 @@ parso = []
 pluggy = []
 pyflakes = []
 pygame = []
+pygame-menu = []
 pyparsing = []
+pyperclip = []
 python-lsp-jsonrpc = []
 python-lsp-server = []
 pytoolconfig = []
 rope = []
 toml = []
 tomli = []
+typing-extensions = []
 ujson = []
 whatthepatch = []
 yapf = []
