@@ -8,4 +8,4 @@ class Country:
         self.coords = points
 
     def draw(self, surface):
-        pygame.draw.polygon(surface, "black", self.coords, width=5)
+        pygame.draw.polygon(surface, "black", self.coords, width=4)

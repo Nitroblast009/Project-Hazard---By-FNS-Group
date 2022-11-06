@@ -53,8 +53,6 @@ def makeGameBoard(map=None):
 
         Siberia.draw(gameBoard)
         FarEast.draw(gameBoard)
-        Kazakhstan.draw(gameBoard)
-        Mongolia.draw(gameBoard)
         China.draw(gameBoard)
         Korea.draw(gameBoard)
         India.draw(gameBoard)
