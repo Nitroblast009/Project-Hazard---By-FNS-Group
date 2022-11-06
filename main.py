@@ -1,26 +1,24 @@
 import pygame
-#from menuscreen import menu
-from colours import *
-from about_us import aboutUs
 from pygame.locals import QUIT
+
+from constants import *
+from game_board import makeGameBoard
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
-pygame.display.set_caption('Project Hazard')
+pygame.display.set_caption("Project Hazard")
 screen.fill(mainScreenColour)
-
 
 running = True
 while running:
-    #aboutUs(screen)
-    #menu()
-    
+    # aboutUs(screen)
+    # menu()
+
+    screen.blit(makeGameBoard("All"), (0, 0))
+
     for event in pygame.event.get():
         if event.type == QUIT:
             running = False
             break
 
-
     pygame.display.update()
-
-pygame.quit()
