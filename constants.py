@@ -24,14 +24,13 @@ Newfoundland = Country(((220, 80), (190, 120), (250, 140)))
 Mexico = Country(((70, 240), (150, 330), (140, 230)))
 Caribbeans = Country(((160, 290), (180, 310), (190, 270)))
 
-Ecuador = Country(((0, 0), (0, 0), (0, 0)))
-Columbia = Country(((0, 0), (0, 0), (0, 0)))
-Venezuela = Country(((0, 0), (0, 0), (0, 0)))
-Peru = Country(((0, 0), (0, 0), (0, 0)))
-Bolivia = Country(((0, 0), (0, 0), (0, 0)))
-Brazil = Country(((0, 0), (0, 0), (0, 0)))
-Chile = Country(((0, 0), (0, 0), (0, 0)))
-Argentina = Country(((0, 0), (0, 0), (0, 0)))
+Ecuador = Country(((150, 330), (100, 380), (150, 380)))
+Columbia = Country(((150, 330), (150, 380), (190, 340)))
+Venezuela = Country(((190, 340), (150, 380), (220, 380)))
+Peru = Country(((100, 380), (90, 420), (180, 490)))
+Brazil = Country(((100, 380), (180, 490), (220, 380)))
+Chile = Country(((110, 440), (80, 530), (180, 490)))
+Argentina = Country(((180, 490), (80, 530), (150, 550)))
 
 # Afroeurasia Countries
 

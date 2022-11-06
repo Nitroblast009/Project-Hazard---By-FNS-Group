@@ -33,7 +33,6 @@ def makeGameBoard(map=None):
         Columbia.draw(gameBoard)
         Venezuela.draw(gameBoard)
         Peru.draw(gameBoard)
-        Bolivia.draw(gameBoard)
         Brazil.draw(gameBoard)
         Chile.draw(gameBoard)
         Argentina.draw(gameBoard)
