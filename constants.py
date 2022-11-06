@@ -9,7 +9,7 @@ mainScreenColour = (48, 141, 255)
 # Americas Countries
 Greenland = Country()
 
-Nuvuk = Country()
+Nuvuk = Country(((0, 0), (50, 0), (25, 50)))
 Alaska = Country()
 Northwest = Country()
 BritishColumbia = Country()

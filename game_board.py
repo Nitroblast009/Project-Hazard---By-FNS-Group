@@ -7,7 +7,7 @@ def makeGameBoard(map=None):
     gameBoard.fill(white)
 
     if map == "All" or map == "Americas":
-        Nuvak.draw(gameBoard)
+        Nuvuk.draw(gameBoard)
 
     if map == "All" or map == "Afroeurasia":
         pass
