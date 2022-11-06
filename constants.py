@@ -7,7 +7,7 @@ white = (255, 255, 255)
 mainScreenColour = (48, 141, 255)
 
 # Americas Countries
-Greenland = Country(((270, 100), (270, 20), (340, 20), (340, 100)))
+Greenland = Country(((240, 90), (240, 10), (310, 10), (310, 90)))
 
 Nuvuk = Country(((20, 20), (10, 50), (50, 40)))
 
@@ -34,19 +34,19 @@ Argentina = Country(((180, 490), (80, 530), (150, 550)))
 
 # Afroeurasia Countries
 
-UK = Country(((0, 0), (0, 0), (0, 0)))
-France = Country(((0, 0), (0, 0), (0, 0)))
-Germany = Country(((0, 0), (0, 0), (0, 0)))
-Scandinavia = Country(((0, 0), (0, 0), (0, 0)))
+UK = Country(((280, 190), (280, 120), (320, 120), (320,190)))
+France = Country(((310, 200), (290, 300), (380, 270)))
+Germany = Country(((360, 180), (310, 200), (380, 270)))
+Scandinavia = Country(((450, 80), (350, 120), (380, 270)))
+
+Turkey = Country(((410, 190), (380, 270), (460, 250)))
+Egypt = Country(((290, 300), (330, 310), (380, 270)))
+Nigeria = Country(((380, 270), (330, 310), (360, 420)))
+Ethiopia = Country(((380, 270), (360, 420), (410, 380)))
+SaudiArabia = Country(((380, 270), (400, 350), (460, 250)))
+Madagascar = Country(((420, 430), (420, 370), (450, 370), (450, 430)))
+
 Ukraine = Country(((0, 0), (0, 0), (0, 0)))
-
-Turkey = Country(((0, 0), (0, 0), (0, 0)))
-Egypt = Country(((0, 0), (0, 0), (0, 0)))
-Nigeria = Country(((0, 0), (0, 0), (0, 0)))
-Ethiopia = Country(((0, 0), (0, 0), (0, 0)))
-SaudiArabia = Country(((0, 0), (0, 0), (0, 0)))
-Madagascar = Country(((0, 0), (0, 0), (0, 0)))
-
 Siberia = Country(((0, 0), (0, 0), (0, 0)))
 FarEast = Country(((0, 0), (0, 0), (0, 0)))
 Kazakhstan = Country(((0, 0), (0, 0), (0, 0)))
