@@ -28,11 +28,11 @@ width = screen.width()
 height = screen.height()
 
 #Texts on screen
-font = pygame.font.SysFont('freesansbold.ttf', 32)
+font = pygame.font.SysFont('arial', 32)
 text1 = font.render('Play', True, colour )
-font2 = pygame.font.SysFont('freesansbold.ttf', 32)
+font2 = pygame.font.SysFont('arial', 32)
 text2 = font2.render('Quit', False, colour)
-font3 = pygame.font.SysFont('freesansbold.ttf', 32)
+font3 = pygame.font.SysFont('arial', 32)
 
 While True:
  for b in 
