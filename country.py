@@ -13,6 +13,7 @@ def getTriangleArea(p1, p2, p3):
 
 
 class Country:
+    selected = False
     coords = []
     name = ""
 
@@ -21,7 +22,8 @@ class Country:
         self.name = name
 
     def draw(self, surface):
-        pygame.draw.polygon(surface, "black", self.coords, width=4)
+        pygame.draw.polygon(
+            surface, "blue" if self.selected else "black", self.coords, width=4)
 
     def check(self, mouseCoord):
         global selectedCountry
@@ -36,7 +38,9 @@ class Country:
 
             if baseArea == checkArea:
                 selectedCountry = self
+                self.selected = True
 
         elif len(self.coords) == 4:
             if mouseCoord[0] > self.coords[0][0] and mouseCoord[0] < self.coords[3][0] and mouseCoord[1] < self.coords[0][1] and mouseCoord[1] > self.coords[1][1]:
                 selectedCountry = self
+                self.selected = True

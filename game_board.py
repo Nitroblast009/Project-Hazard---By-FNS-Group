@@ -69,6 +69,10 @@ def makeGameBoard(map=None):
 
 
 def checkGameBoard(map=None, mouse=None):
+    if country.selectedCountry != None:
+        country.selectedCountry.selected = False
+        country.selectedCountry = None
+
     if map == "All" or map == "Americas":
         Greenland.check(mouse)
 
@@ -95,6 +99,7 @@ def checkGameBoard(map=None, mouse=None):
         Argentina.check(mouse)
 
     if map == "All" or map == "Afroeurasia":
+
         UK.check(mouse)
         France.check(mouse)
         Germany.check(mouse)
@@ -120,4 +125,4 @@ def checkGameBoard(map=None, mouse=None):
         Australia.check(mouse)
         NewZealand.check(mouse)
 
-        return "None" if country.selectedCountry == None else country.selectedCountry.name
+    return "None" if country.selectedCountry == None else country.selectedCountry.name
