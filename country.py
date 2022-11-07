@@ -1,11 +1,38 @@
 import pygame
 
+selectedCountry = None
+
+
+def getTriangleArea(p1, p2, p3):
+    x1, y1 = p1
+    x2, y2 = p2
+    x3, y3 = p3
+
+    return abs((x1 * (y2 - y3) + x2 * (y3 - y1)
+                + x3 * (y1 - y2)) / 2.0)
+
 
 class Country:
     coords = []
+    name = ""
 
-    def __init__(self, points=None):
+    def __init__(self, name, points=None):
         self.coords = points
+        self.name = name
 
     def draw(self, surface):
         pygame.draw.polygon(surface, "black", self.coords, width=4)
+
+    def check(self, mouseCoord):
+        if len(self.coords) == 3:
+            baseArea = getTriangleArea(
+                self.coords[0], self.coords[1], self.coords[2])
+
+            area1 = getTriangleArea(mouseCoord, self.coords[0], self.coords[1])
+            area2 = getTriangleArea(mouseCoord, self.coords[1], self.coords[2])
+            area3 = getTriangleArea(mouseCoord, self.coords[2], self.coords[0])
+            checkArea = area1 + area2 + area3
+
+            if baseArea == checkArea:
+                global selectedCountry
+                selectedCountry = self
