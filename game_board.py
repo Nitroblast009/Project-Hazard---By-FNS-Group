@@ -65,6 +65,10 @@ def makeGameBoard(map=None):
         Australia.draw(gameBoard)
         NewZealand.draw(gameBoard)
 
+    try:
+        country.selectedCountry.draw(gameBoard)
+    except:
+        pass
     return gameBoard
 
 

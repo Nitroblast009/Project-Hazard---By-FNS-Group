@@ -44,3 +44,6 @@ class Country:
             if mouseCoord[0] > self.coords[0][0] and mouseCoord[0] < self.coords[3][0] and mouseCoord[1] < self.coords[0][1] and mouseCoord[1] > self.coords[1][1]:
                 selectedCountry = self
                 self.selected = True
+
+    def attack():
+        pygame.draw.rect(500,300)

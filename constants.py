@@ -6,7 +6,7 @@ white = (255, 255, 255)
 # Custom colours
 mainScreenColour = (48, 141, 255)
 
-# Americas Countries
+# Americas Countries/Provinces
 Greenland = Country("Greenland", ((240, 90), (240, 10), (310, 10), (310, 90)))
 
 Nuvuk = Country("Nuvuk", ((20, 20), (10, 50), (50, 40)))
