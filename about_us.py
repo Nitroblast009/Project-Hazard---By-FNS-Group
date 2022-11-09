@@ -1,5 +1,5 @@
 import pygame
-from colours import white
+from constants import white
 pygame.init()
 
 def aboutUs(screen):

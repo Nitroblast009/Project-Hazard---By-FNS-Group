@@ -1,4 +1,5 @@
 import pygame
+import constants
 
 selectedCountry = None
 
@@ -16,14 +17,21 @@ class Country:
     selected = False
     coords = []
     name = ""
+    player = ""
 
-    def __init__(self, name, points=None):
+    def __init__(self, name, points, player):
         self.coords = points
         self.name = name
+        self.player = player
 
     def draw(self, surface):
-        pygame.draw.polygon(
-            surface, "blue" if self.selected else "black", self.coords, width=4)
+      if self.player == "p1":
+        colour = pygame.Color("0xb51818") if self.selected else "red"
+      elif self.player == "p2":
+        colour = pygame.Color("0x014080") if self.selected else pygame.Color("0x0271ad")
+        
+      pygame.draw.polygon(
+            surface, colour, self.coords, width=6 if self.selected else 4)
 
     def check(self, mouseCoord):
         global selectedCountry
@@ -45,5 +53,6 @@ class Country:
                 selectedCountry = self
                 self.selected = True
 
-    def attack():
-        pygame.draw.rect(500,300)
+    # def attack():
+        #use def checkGameBoard to check if country is next to it and then fill the country if troop count > than the other country?
+        #use lists for each country to see if they can attack it
