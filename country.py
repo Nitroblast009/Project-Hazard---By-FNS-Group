@@ -1,4 +1,4 @@
-import pygame
+import pygame, pygame.gfxdraw
 import constants
 
 selectedCountry = None
@@ -25,13 +25,10 @@ class Country:
         self.player = player
 
     def draw(self, surface):
-      if self.player == "p1":
-        colour = pygame.Color("0xb51818") if self.selected else "red"
-      elif self.player == "p2":
-        colour = pygame.Color("0x014080") if self.selected else pygame.Color("0x0271ad")
-        
+      pygame.gfxdraw.filled_polygon(surface, self.coords, pygame.Color("red") if self.player == "p1" else pygame.Color("0x0271ad"))
+      
       pygame.draw.polygon(
-            surface, colour, self.coords, width=6 if self.selected else 4)
+            surface, "black", self.coords, width=6 if self.selected else 4)
 
     def check(self, mouseCoord):
         global selectedCountry
