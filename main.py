@@ -1,24 +1,20 @@
 import pygame
 import time
-from pygame.locals import QUIT
 
 from constants import *
-from game_board import makeGameBoard, checkGameBoard
+from game_board import *
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Project Hazard")
-screen.fill(mainScreenColour)
 selectedCountry = "None"
 
 running = True
 while running:
-    # aboutUs(screen)
-    # menu()
 
-    screen.blit(makeGameBoard(map="All"), (0, 0))
-
-    font = pygame.font.SysFont('arial', 40)
+    screen.blit(makeGameBoard("All", screen), (0, 0))
+  
+    font = pygame.font.SysFont('arial', 30)
     selectedCountryText = font.render(
         "Selected: " + selectedCountry, True, "black")
     selectedCountryRect = selectedCountryText.get_rect()

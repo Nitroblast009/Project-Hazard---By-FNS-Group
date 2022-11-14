@@ -1,72 +1,74 @@
 import pygame
-
 from constants import *
 import country
 
 
-def makeGameBoard(map=None):
+def makeGameBoard(map, screen):
     gameBoard = pygame.Surface((650, 600))
     gameBoard.fill("white")
 
+    """ Gridlines:
     for i in range(7):
         pygame.draw.rect(gameBoard, "black", (i * 100, 0, 1, 600))
 
     for i in range(6):
         pygame.draw.rect(gameBoard, "black", (0, i * 100, 700, 1))
+    """
+   
 
     if map == "All" or map == "Americas":
-        Greenland.draw(gameBoard)
+        Greenland.draw(gameBoard, screen)
 
-        Nuvuk.draw(gameBoard)
-        Alaska.draw(gameBoard)
-        Northwest.draw(gameBoard)
-        BritishColumbia.draw(gameBoard)
-        Nunavut.draw(gameBoard)
-        Alberta.draw(gameBoard)
-        Ontario.draw(gameBoard)
-        Newfoundland.draw(gameBoard)
-        Quebec.draw(gameBoard)
-        PEI.draw(gameBoard)
+        Nuvuk.draw(gameBoard, screen)
+        Alaska.draw(gameBoard, screen)
+        Northwest.draw(gameBoard, screen)
+        BritishColumbia.draw(gameBoard, screen)
+        Nunavut.draw(gameBoard, screen)
+        Alberta.draw(gameBoard, screen)
+        Ontario.draw(gameBoard, screen)
+        Newfoundland.draw(gameBoard, screen)
+        Quebec.draw(gameBoard, screen)
+        PEI.draw(gameBoard, screen)
 
-        Mexico.draw(gameBoard)
-        Caribbeans.draw(gameBoard)
+        Mexico.draw(gameBoard, screen)
+        Caribbeans.draw(gameBoard, screen)
 
-        Ecuador.draw(gameBoard)
-        Columbia.draw(gameBoard)
-        Venezuela.draw(gameBoard)
-        Peru.draw(gameBoard)
-        Brazil.draw(gameBoard)
-        Chile.draw(gameBoard)
-        Argentina.draw(gameBoard)
+        Ecuador.draw(gameBoard, screen)
+        Columbia.draw(gameBoard, screen)
+        Venezuela.draw(gameBoard, screen)
+        Peru.draw(gameBoard, screen)
+        Brazil.draw(gameBoard, screen)
+        Chile.draw(gameBoard, screen)
+        Argentina.draw(gameBoard, screen)
 
     if map == "All" or map == "Afroeurasia":
-        UK.draw(gameBoard)
-        France.draw(gameBoard)
-        Germany.draw(gameBoard)
-        Scandinavia.draw(gameBoard)
-        Ukraine.draw(gameBoard)
+        UK.draw(gameBoard, screen)
+        France.draw(gameBoard, screen)
+        Germany.draw(gameBoard, screen)
+        Scandinavia.draw(gameBoard, screen)
+        Ukraine.draw(gameBoard, screen)
 
-        Turkey.draw(gameBoard)
-        Egypt.draw(gameBoard)
-        Nigeria.draw(gameBoard)
-        Ethiopia.draw(gameBoard)
-        SaudiArabia.draw(gameBoard)
-        Madagascar.draw(gameBoard)
+        Turkey.draw(gameBoard, screen)
+        Egypt.draw(gameBoard, screen)
+        Nigeria.draw(gameBoard, screen)
+        Ethiopia.draw(gameBoard, screen)
+        SaudiArabia.draw(gameBoard, screen)
+        Madagascar.draw(gameBoard, screen)
 
-        Siberia.draw(gameBoard)
-        FarEast.draw(gameBoard)
-        China.draw(gameBoard)
-        Korea.draw(gameBoard)
-        India.draw(gameBoard)
-        Japan.draw(gameBoard)
+        Siberia.draw(gameBoard, screen)
+        FarEast.draw(gameBoard, screen)
+        China.draw(gameBoard, screen)
+        Korea.draw(gameBoard, screen)
+        India.draw(gameBoard, screen)
+        Japan.draw(gameBoard, screen)
 
-        Indonesia.draw(gameBoard)
-        Philippines.draw(gameBoard)
-        Australia.draw(gameBoard)
-        NewZealand.draw(gameBoard)
+        Indonesia.draw(gameBoard, screen)
+        Philippines.draw(gameBoard, screen)
+        Australia.draw(gameBoard, screen)
+        NewZealand.draw(gameBoard, screen)
 
     try:
-        country.selectedCountry.draw(gameBoard)
+        country.selectedCountry.draw(gameBoard, screen)
     except:
         pass
     return gameBoard
@@ -129,4 +131,4 @@ def checkGameBoard(map=None, mouse=None):
         Australia.check(mouse)
         NewZealand.check(mouse)
 
-    return "None" if country.selectedCountry == None else country.selectedCountry.name
+    return "None" if country.selectedCountry == None else country.selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"
