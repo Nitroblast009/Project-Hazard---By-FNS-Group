@@ -3,7 +3,7 @@ from constants import *
 import country
 
 
-def makeGameBoard(map, screen):
+def makeGameBoard(map):
     gameBoard = pygame.Surface((650, 600))
     gameBoard.fill("white")
 
@@ -17,118 +17,118 @@ def makeGameBoard(map, screen):
    
 
     if map == "All" or map == "Americas":
-        Greenland.draw(gameBoard, screen)
+        Greenland.draw(gameBoard)
 
-        Nuvuk.draw(gameBoard, screen)
-        Alaska.draw(gameBoard, screen)
-        Northwest.draw(gameBoard, screen)
-        BritishColumbia.draw(gameBoard, screen)
-        Nunavut.draw(gameBoard, screen)
-        Alberta.draw(gameBoard, screen)
-        Ontario.draw(gameBoard, screen)
-        Newfoundland.draw(gameBoard, screen)
-        Quebec.draw(gameBoard, screen)
-        PEI.draw(gameBoard, screen)
+        Nuvuk.draw(gameBoard)
+        Alaska.draw(gameBoard)
+        Northwest.draw(gameBoard)
+        BritishColumbia.draw(gameBoard)
+        Nunavut.draw(gameBoard)
+        Alberta.draw(gameBoard)
+        Ontario.draw(gameBoard)
+        Newfoundland.draw(gameBoard)
+        Quebec.draw(gameBoard)
+        PEI.draw(gameBoard)
 
-        Mexico.draw(gameBoard, screen)
-        Caribbeans.draw(gameBoard, screen)
+        Mexico.draw(gameBoard)
+        Caribbeans.draw(gameBoard)
 
-        Ecuador.draw(gameBoard, screen)
-        Columbia.draw(gameBoard, screen)
-        Venezuela.draw(gameBoard, screen)
-        Peru.draw(gameBoard, screen)
-        Brazil.draw(gameBoard, screen)
-        Chile.draw(gameBoard, screen)
-        Argentina.draw(gameBoard, screen)
+        Ecuador.draw(gameBoard)
+        Columbia.draw(gameBoard)
+        Venezuela.draw(gameBoard)
+        Peru.draw(gameBoard)
+        Brazil.draw(gameBoard)
+        Chile.draw(gameBoard)
+        Argentina.draw(gameBoard)
 
     if map == "All" or map == "Afroeurasia":
-        UK.draw(gameBoard, screen)
-        France.draw(gameBoard, screen)
-        Germany.draw(gameBoard, screen)
-        Scandinavia.draw(gameBoard, screen)
-        Ukraine.draw(gameBoard, screen)
+        UK.draw(gameBoard)
+        France.draw(gameBoard)
+        Germany.draw(gameBoard)
+        Scandinavia.draw(gameBoard)
+        Ukraine.draw(gameBoard)
 
-        Turkey.draw(gameBoard, screen)
-        Egypt.draw(gameBoard, screen)
-        Nigeria.draw(gameBoard, screen)
-        Ethiopia.draw(gameBoard, screen)
-        SaudiArabia.draw(gameBoard, screen)
-        Madagascar.draw(gameBoard, screen)
+        Turkey.draw(gameBoard)
+        Egypt.draw(gameBoard)
+        Nigeria.draw(gameBoard)
+        Ethiopia.draw(gameBoard)
+        SaudiArabia.draw(gameBoard)
+        Madagascar.draw(gameBoard)
 
-        Siberia.draw(gameBoard, screen)
-        FarEast.draw(gameBoard, screen)
-        China.draw(gameBoard, screen)
-        Korea.draw(gameBoard, screen)
-        India.draw(gameBoard, screen)
-        Japan.draw(gameBoard, screen)
+        Siberia.draw(gameBoard)
+        FarEast.draw(gameBoard)
+        China.draw(gameBoard)
+        Korea.draw(gameBoard)
+        India.draw(gameBoard)
+        Japan.draw(gameBoard)
 
-        Indonesia.draw(gameBoard, screen)
-        Philippines.draw(gameBoard, screen)
-        Australia.draw(gameBoard, screen)
-        NewZealand.draw(gameBoard, screen)
+        Indonesia.draw(gameBoard)
+        Philippines.draw(gameBoard)
+        Australia.draw(gameBoard)
+        NewZealand.draw(gameBoard)
 
     try:
-        country.selectedCountry.draw(gameBoard, screen)
+        country.selectedCountry.draw(gameBoard)
     except:
         pass
     return gameBoard
 
 
-def checkGameBoard(map=None, mouse=None):
+def checkGameBoard(map, mouse, playerTurn):
     if country.selectedCountry != None:
         country.selectedCountry.selected = False
         country.selectedCountry = None
 
     if map == "All" or map == "Americas":
-        Greenland.check(mouse)
+        Greenland.check(mouse, playerTurn)
 
-        Nuvuk.check(mouse)
-        Alaska.check(mouse)
-        Northwest.check(mouse)
-        BritishColumbia.check(mouse)
-        Nunavut.check(mouse)
-        Alberta.check(mouse)
-        Ontario.check(mouse)
-        Newfoundland.check(mouse)
-        Quebec.check(mouse)
-        PEI.check(mouse)
+        Nuvuk.check(mouse, playerTurn)
+        Alaska.check(mouse, playerTurn)
+        Northwest.check(mouse, playerTurn)
+        BritishColumbia.check(mouse, playerTurn)
+        Nunavut.check(mouse, playerTurn)
+        Alberta.check(mouse, playerTurn)
+        Ontario.check(mouse, playerTurn)
+        Newfoundland.check(mouse, playerTurn)
+        Quebec.check(mouse, playerTurn)
+        PEI.check(mouse, playerTurn)
 
-        Mexico.check(mouse)
-        Caribbeans.check(mouse)
+        Mexico.check(mouse, playerTurn)
+        Caribbeans.check(mouse, playerTurn)
 
-        Ecuador.check(mouse)
-        Columbia.check(mouse)
-        Venezuela.check(mouse)
-        Peru.check(mouse)
-        Brazil.check(mouse)
-        Chile.check(mouse)
-        Argentina.check(mouse)
+        Ecuador.check(mouse, playerTurn)
+        Columbia.check(mouse, playerTurn)
+        Venezuela.check(mouse, playerTurn)
+        Peru.check(mouse, playerTurn)
+        Brazil.check(mouse, playerTurn)
+        Chile.check(mouse, playerTurn)
+        Argentina.check(mouse, playerTurn)
 
     if map == "All" or map == "Afroeurasia":
 
-        UK.check(mouse)
-        France.check(mouse)
-        Germany.check(mouse)
-        Scandinavia.check(mouse)
-        Ukraine.check(mouse)
+        UK.check(mouse, playerTurn)
+        France.check(mouse, playerTurn)
+        Germany.check(mouse, playerTurn)
+        Scandinavia.check(mouse, playerTurn)
+        Ukraine.check(mouse, playerTurn)
 
-        Turkey.check(mouse)
-        Egypt.check(mouse)
-        Nigeria.check(mouse)
-        Ethiopia.check(mouse)
-        SaudiArabia.check(mouse)
-        Madagascar.check(mouse)
+        Turkey.check(mouse, playerTurn)
+        Egypt.check(mouse, playerTurn)
+        Nigeria.check(mouse, playerTurn)
+        Ethiopia.check(mouse, playerTurn)
+        SaudiArabia.check(mouse, playerTurn)
+        Madagascar.check(mouse, playerTurn)
 
-        Siberia.check(mouse)
-        FarEast.check(mouse)
-        China.check(mouse)
-        Korea.check(mouse)
-        India.check(mouse)
-        Japan.check(mouse)
+        Siberia.check(mouse, playerTurn)
+        FarEast.check(mouse, playerTurn)
+        China.check(mouse, playerTurn)
+        Korea.check(mouse, playerTurn)
+        India.check(mouse, playerTurn)
+        Japan.check(mouse, playerTurn)
 
-        Indonesia.check(mouse)
-        Philippines.check(mouse)
-        Australia.check(mouse)
-        NewZealand.check(mouse)
+        Indonesia.check(mouse, playerTurn)
+        Philippines.check(mouse, playerTurn)
+        Australia.check(mouse, playerTurn)
+        NewZealand.check(mouse, playerTurn)
 
     return "None" if country.selectedCountry == None else country.selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"

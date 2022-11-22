@@ -26,7 +26,7 @@ class Country:
         self.player = player
         self.troops = troops
 
-    def draw(self, surface, screen):
+    def draw(self, surface):
       if self.player == "p1":
         colour = pygame.Color("0xb51818") if self.selected else pygame.Color("red")
       elif self.player == "p2":
@@ -38,25 +38,26 @@ class Country:
             surface, "black", self.coords, width=5 if self.selected else 4)
 
 
-    def check(self, mouseCoord):
+    def check(self, mouseCoord, playerTurn):
         global selectedCountry
-        if len(self.coords) == 3:
-            baseArea = getTriangleArea(
-                self.coords[0], self.coords[1], self.coords[2])
-
-            area1 = getTriangleArea(mouseCoord, self.coords[0], self.coords[1])
-            area2 = getTriangleArea(mouseCoord, self.coords[1], self.coords[2])
-            area3 = getTriangleArea(mouseCoord, self.coords[2], self.coords[0])
-            checkArea = area1 + area2 + area3
-
-            if baseArea == checkArea:
-                selectedCountry = self
-                self.selected = True
-
-        elif len(self.coords) == 4:
-            if mouseCoord[0] > self.coords[0][0] and mouseCoord[0] < self.coords[3][0] and mouseCoord[1] < self.coords[0][1] and mouseCoord[1] > self.coords[1][1]:
-                selectedCountry = self
-                self.selected = True
+        if playerTurn == self.player:
+          if len(self.coords) == 3:
+              baseArea = getTriangleArea(
+                  self.coords[0], self.coords[1], self.coords[2])
+  
+              area1 = getTriangleArea(mouseCoord, self.coords[0], self.coords[1])
+              area2 = getTriangleArea(mouseCoord, self.coords[1], self.coords[2])
+              area3 = getTriangleArea(mouseCoord, self.coords[2], self.coords[0])
+              checkArea = area1 + area2 + area3
+  
+              if baseArea == checkArea:
+                  selectedCountry = self
+                  self.selected = True
+  
+          elif len(self.coords) == 4:
+              if mouseCoord[0] > self.coords[0][0] and mouseCoord[0] < self.coords[3][0] and mouseCoord[1] < self.coords[0][1] and mouseCoord[1] > self.coords[1][1]:
+                  selectedCountry = self
+                  self.selected = True
 
     # def attack(self):
         
