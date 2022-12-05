@@ -59,9 +59,5 @@ class Country:
                   selectedCountry = self
                   self.selected = True
 
-    # def attack(self):
-        
-    #     #use def checkGameBoard to check if country is next to it and then fill the country if troop count > than the other country?
-    #     #use lists for each country to see if they can attack it
-
     
+        

@@ -132,3 +132,8 @@ def checkGameBoard(map, mouse, playerTurn):
         NewZealand.check(mouse, playerTurn)
 
     return "None" if country.selectedCountry == None else country.selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"
+
+
+def attack(attackCountry, defendCountry):
+
+

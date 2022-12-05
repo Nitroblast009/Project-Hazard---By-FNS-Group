@@ -6,21 +6,21 @@ from game_board import *
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
-screen.fill((255, 99, 51))
 pygame.display.set_caption("Project Hazard")
-selectedCountry = "None"
-playerTurn = "p2"
+selectedCountryName = "None"
+playerTurn = "p1"
+gamePhase =  "DRAW"
 
 running = True
 while running:
-
+    screen.fill((255, 99, 51))
     # Add main game board
     screen.blit(makeGameBoard("All"), (0, 0))
 
     # Selected text
     font = pygame.font.SysFont('arial', 30)
     selectedCountryText = font.render(
-        "Selected: " + selectedCountry, True, "black")
+        "Selected: " + selectedCountryName, True, "black")
     selectedCountryRect = selectedCountryText.get_rect()
     selectedCountryRect.center = (380, 560)
 
@@ -31,18 +31,27 @@ while running:
     playerTurnRect = playerTurnText.get_rect()
     playerTurnRect.center = (727, 10)
 
+    # Game phase text
+    gamePhaseText = font.render(
+        gamePhase, True, "black")
+    gamePhaseRect = gamePhaseText.get_rect()
+    gamePhaseRect.center = (727, 60)
+
     screen.blit(selectedCountryText, selectedCountryRect)
     screen.blit(playerTurnText, playerTurnRect)
+    screen.blit(gamePhaseText, gamePhaseRect)
 
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             mouseX, mouseY = pygame.mouse.get_pos()
 
-            selectedCountry = checkGameBoard(
+            selectedCountryName = checkGameBoard(
                 "All", (mouseX, mouseY), playerTurn)
 
         elif event.type == pygame.QUIT:
             running = False
             break
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+            gamePhase = "ENTER"
 
     pygame.display.update()
