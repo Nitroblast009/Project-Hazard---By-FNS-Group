@@ -131,9 +131,16 @@ def checkGameBoard(map, mouse, playerTurn):
         Australia.check(mouse, playerTurn)
         NewZealand.check(mouse, playerTurn)
 
-    return "None" if country.selectedCountry == None else country.selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"
+    return country.selectedCountry
 
 
-def attack(attackCountry, defendCountry):
+def attack(defendCountry):
+    defendCountry
 
+
+
+
+    
+#     minus troops and change colour of countries here
+#     gets called from main, and under mouse click state if current gamephase == attackPhase, set coutnry that is getting attacked as another mouseclick, pass that into this function and this function changes the colour and troop count
 
