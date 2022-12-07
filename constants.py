@@ -42,12 +42,12 @@ Ethiopia = Country("Ethiopia", ((380, 270), (360, 420), (410, 380)), random.choi
 SaudiArabia = Country("Saudi Arabia", ((380, 270), (400, 350), (460, 250)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Ethiopia","Turkey","Madagascar"])
 Madagascar = Country("Madagascar", ((420, 430), (420, 370), (450, 370), (450, 430)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Ethiopia","Saudi Arabia"])
 
-Ukraine = Country("Ukraine", ((450, 80), (410, 190), (500, 150)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Far East","China","Scandinavia","Turkey"])
+Ukraine = Country("Ukraine", ((450, 80), (410, 190), (500, 150)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Far East","China","Scandinavia","Turkey","Siberia"])
 Siberia = Country("Siberia", ((450, 80), (500, 150), (510, 90)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Far East","China","Ukraine"])
 FarEast = Country("Far East", ((510, 90), (500, 150), (620, 110)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["China","Korea","Siberia"])
 China = Country("China", ((560, 130), (410, 190), (540, 210)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Far East","Ukraine","Siberia","Korea"])
 Korea = Country("Korea", ((560, 130), (540, 210), (570, 200)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Japan","China","Far East"])
-India = Country("India", ((410, 190), (500, 300), (540, 210)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["China","Korea","India"])
+India = Country("India", ((410, 190), (500, 300), (540, 210)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["China","Korea","Indonesia","Turkey"])
 Japan = Country("Japan", ((580, 260), (580, 180), (610, 180), (610, 260)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Korea"])
 
 Indonesia = Country(

@@ -9,15 +9,17 @@ screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Project Hazard")
 selectedCountry = None
 selectedCountryName = "None"
-playerTurn = "p2"
+playerTurn = "p1"
 gamePhase =  "DRAFT"
 running = True
+confirm = False
+confirm2 = False
 
 while running:
   screen.fill((255, 99, 51))
   # Add main game board
-  gameBoard = makeGameBoard("All"), (0, 0)
-  screen.blit(makeGameBoard("All"), (0, 0))
+  gameBoard = makeGameBoard("All")
+  screen.blit(gameBoard, (0,0))
 
   # Selected text
   font = pygame.font.SysFont('arial', 30)
@@ -37,10 +39,17 @@ while running:
   gamePhaseText = font.render(
       gamePhase, True, "black")
   gamePhaseRect = gamePhaseText.get_rect()
-  gamePhaseRect.center = (727, 60)
+  gamePhaseRect.center = (727, 50)
+
+  # Confirm Text
+  confirmText = font.render(
+      "2nd Confirm?" if confirm2 else "Confirm?" if confirm else "", True, "black")
+  confirmRect = confirmText.get_rect()
+  confirmRect.center = (727, 90)
 
   screen.blit(selectedCountryText, selectedCountryRect)
   screen.blit(playerTurnText, playerTurnRect)
+  screen.blit(confirmText, confirmRect)
   screen.blit(gamePhaseText, gamePhaseRect)
 
   for event in pygame.event.get():
@@ -50,31 +59,50 @@ while running:
           selectedCountry = checkGameBoard(
               "All", (mouseX, mouseY), playerTurn)
           
-          selectedCountryName = "None" if selectedCountry == None else selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"
-          
-      elif gamePhase == "ATTACK" or gamePhase == "FORTIFY":
-            selectedCountry2 = checkGameBoard(
-                "All", (mouseX, mouseY), playerTurn)
-            selectedCountryName = "None" if selectedCountry == None else selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"
-
-    
+          if selectedCountry != None:
+            selectedCountryName = selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"
+            confirm = True
+          else:
+            selectedCountryName = "None"
+            confirm = False
       
       elif event.type == pygame.QUIT:
           running = False
           break
       
+      
       elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-        
+
         # For DRAFT Phase
         if gamePhase == "DRAFT" and selectedCountry != None:
           selectedCountry.troops += 2
           selectedCountryName = selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"
-          gamePhase = "ATTACK"
           
-          selectedCountry.selected = False
+          gamePhase = "FORTIFY"
+          selectedCountryName = "None"
+          confirm = False
+          checkGameBoard("All", (0, 0), playerTurn)
+          
+        elif gamePhase == "FORTIFY" and selectedCountry != None and confirm2 == False:
+          confirm2 = True
+          baseCountry = selectedCountry
+
+          checkGameBoard("All", (0, 0), playerTurn)
           selectedCountry = None
           selectedCountryName = "None"
-        
-        
+          confirm = False
+
+        elif gamePhase == "FORTIFY" and selectedCountry != None and confirm2 and selectedCountry != baseCountry and selectedCountry.name in baseCountry.neighbours:
+          confirm2 = False
+          foritfy(baseCountry, selectedCountry)
+
+          checkGameBoard("All", (0, 0), playerTurn)
+          selectedCountry = None
+          selectedCountryName = "None"
+          confirm = False
+
+          gamePhase = "DRAFT"
+          playerTurn = "p1" if playerTurn == "p2" else "p2"
+          
         
   pygame.display.update()

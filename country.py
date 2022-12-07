@@ -42,7 +42,7 @@ class Country:
 
     def check(self, mouseCoord, playerTurn):
         global selectedCountry
-        if True:
+        if self.player == playerTurn:
           if len(self.coords) == 3:
               baseArea = getTriangleArea(
                   self.coords[0], self.coords[1], self.coords[2])

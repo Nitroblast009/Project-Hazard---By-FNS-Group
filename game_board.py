@@ -133,7 +133,11 @@ def checkGameBoard(map, mouse, playerTurn):
 
     return country.selectedCountry
 
-
+# GAME PHASE FUNCTIONS
+  
+def foritfy(baseCountry, targetCountry):
+  print(f"Fortified ${targetCountry.name} from ${baseCountry.name}")
+  
 # def attack(defendCountry):
 #     defendCountry.troops - 
 
