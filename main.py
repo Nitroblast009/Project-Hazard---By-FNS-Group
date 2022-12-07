@@ -11,8 +11,8 @@ selectedCountry = None
 selectedCountryName = "None"
 playerTurn = "p2"
 gamePhase =  "DRAFT"
-
 running = True
+
 while running:
   screen.fill((255, 99, 51))
   # Add main game board
@@ -49,16 +49,32 @@ while running:
 
           selectedCountry = checkGameBoard(
               "All", (mouseX, mouseY), playerTurn)
+          
           selectedCountryName = "None" if selectedCountry == None else selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"
+          
+      elif gamePhase == "ATTACK" or gamePhase == "FORTIFY":
+            selectedCountry2 = checkGameBoard(
+                "All", (mouseX, mouseY), playerTurn)
+            selectedCountryName = "None" if selectedCountry == None else selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"
 
+    
+      
       elif event.type == pygame.QUIT:
           running = False
           break
+      
       elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-          # For DRAFT Phase
+        
+        # For DRAFT Phase
         if gamePhase == "DRAFT" and selectedCountry != None:
           selectedCountry.troops += 2
-          print(selectedCountry.troops)
           selectedCountryName = selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"
-  
+          gamePhase = "ATTACK"
+          
+          selectedCountry.selected = False
+          selectedCountry = None
+          selectedCountryName = "None"
+        
+        
+        
   pygame.display.update()

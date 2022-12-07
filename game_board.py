@@ -134,8 +134,8 @@ def checkGameBoard(map, mouse, playerTurn):
     return country.selectedCountry
 
 
-def attack(defendCountry):
-    defendCountry
+# def attack(defendCountry):
+#     defendCountry.troops - 
 
 
 

@@ -16,15 +16,17 @@ def getTriangleArea(p1, p2, p3):
 class Country:
     selected = False
     coords = []
+    neighbours = []
     name = ""
     player = ""
     troops = 0
 
-    def __init__(self, name, points, player, troops):
+    def __init__(self, name, points, player, troops, neighbours):
         self.coords = points
         self.name = name
         self.player = player
         self.troops = troops
+        self.neighbours = neighbours
 
     def draw(self, surface):
       if self.player == "p1":
@@ -40,7 +42,7 @@ class Country:
 
     def check(self, mouseCoord, playerTurn):
         global selectedCountry
-        if playerTurn == self.player:
+        if True:
           if len(self.coords) == 3:
               baseArea = getTriangleArea(
                   self.coords[0], self.coords[1], self.coords[2])
