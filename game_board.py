@@ -135,11 +135,16 @@ def checkGameBoard(map, mouse, playerTurn):
 
 # GAME PHASE FUNCTIONS
   
-def foritfy(baseCountry, targetCountry):
+def fortify(baseCountry, targetCountry):
   print(f"Fortified ${targetCountry.name} from ${baseCountry.name}")
   
-# def attack(defendCountry):
-#     defendCountry.troops - 
+def attack(player,attackCountry,defendCountry):
+    defendCountry.troops - attackCountry.troops
+    if defendCountry.troops <= 0:
+        if player == "p1":
+            defendCountry.player == "p2"
+        if player == "p2":
+            defendCountry.player == "p1"
 
 
 

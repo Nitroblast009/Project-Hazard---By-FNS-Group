@@ -1,0 +1,135 @@
+import pygame
+
+class Menu():
+  #Helper functions
+    def __init__(self, game):
+        self.game = game
+        self.mid_w, self.mid_h = self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2
+        self.run_display = True
+        self.cursor_rect = pygame.Rect(0, 0, 20, 20)
+        self.distance = - 50
+
+    def draw_cursor(self):
+        self.game.draw_text('>', 15, self.cursor_rect.x, self.cursor_rect.y)
+
+    def blit_screen(self):
+        self.game.window.blit(self.game.display, (0, 0))
+        pygame.display.update()
+        self.game.default_keys()
+
+class MainMenu(Menu):
+    def __init__(self, game):
+        Menu.__init__(self, game)
+        self.state = "Start"
+        self.startx, self.starty = self.mid_w, self.mid_h + 30
+        self.settingsx, self.settingsy = self.mid_w, self.mid_h + 50
+        self.creditsx, self.creditsy = self.mid_w, self.mid_h + 70
+        self.cursor_rect.midtop = (self.startx + self.distance, self.starty)
+
+    def display_menu(self):
+      #Making sure it's always true
+        self.run_display = True
+        while self.run_display:
+            self.game.user_input()
+            self.check_input()
+            self.game.display.fill(self.game.BLACK)
+            self.game.draw_text('Risk', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
+            self.game.draw_text("Start", 20, self.startx, self.starty)
+            self.game.draw_text("Settings", 20, self.settingsx, self.settingsy)
+            self.game.draw_text("Credits", 20, self.creditsx, self.creditsy)
+            self.draw_cursor()
+            self.blit_screen()
+
+
+    def move_cursor(self):
+        if self.game.DOWN_KEY:
+            if self.state == 'Start':
+                self.cursor_rect.midtop = (self.settingsx + self.distance, self.settingsy)
+                self.state = 'Settings'
+            elif self.state == 'Settings':
+                self.cursor_rect.midtop = (self.creditsx + self.distance, self.creditsy)
+                self.state = 'Credits'
+            elif self.state == 'Credits':
+                self.cursor_rect.midtop = (self.startx + self.distance, self.starty)
+                self.state = 'Start'
+        elif self.game.UP_KEY:
+            if self.state == 'Start':
+                self.cursor_rect.midtop = (self.creditsx + self.distance, self.creditsy)
+                self.state = 'Credits'
+            elif self.state == 'Settings':
+                self.cursor_rect.midtop = (self.startx + self.distance, self.starty)
+                self.state = 'Start'
+            elif self.state == 'Credits':
+                self.cursor_rect.midtop = (self.settingsx + self.distance, self.settingsy)
+                self.state = 'Settings'
+
+    def check_input(self):
+        self.move_cursor()
+        if self.game.START_KEY:
+            if self.state == 'Start':
+                self.game.playing = True
+            elif self.state == 'Settings':
+                self.game.curr_menu = self.game.settings
+            elif self.state == 'Credits':
+                self.game.curr_menu = self.game.credits
+            self.run_display = False
+
+class SettingsMenu(Menu):
+    def __init__(self, game):
+        Menu.__init__(self, game)
+        self.state = 'Volume'
+        self.volx, self.voly = self.mid_w, self.mid_h + 20
+        self.controlsx, self.controlsy = self.mid_w, self.mid_h + 40
+        self.cursor_rect.midtop = (self.volx + self.distance, self.voly)
+
+    def display_menu(self):
+        self.run_display = True
+        while self.run_display:
+            self.game.user_input()
+            self.check_input()
+            self.game.display.fill((0, 0, 0))
+            self.game.draw_text('Settings', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 30)
+            self.game.draw_text("Volume", 15, self.volx, self.voly)
+            self.game.draw_text("Controls", 15, self.controlsx, self.controlsy)
+            self.draw_cursor()
+            self.blit_screen()
+
+    def check_input(self):
+        if self.game.BACK_KEY:
+            self.game.curr_menu = self.game.main_menu
+            self.run_display = False
+        elif self.game.UP_KEY or self.game.DOWN_KEY:
+            if self.state == 'Volume':
+                self.state = 'Controls'
+                self.cursor_rect.midtop = (self.controlsx + self.distance, self.controlsy)
+            elif self.state == 'Controls':
+                self.state = 'Volume'
+                self.cursor_rect.midtop = (self.volx + self.distance, self.voly)
+        elif self.game.START_KEY:
+            pass
+
+class CreditsMenu(Menu):
+    def __init__(self, game):
+        Menu.__init__(self, game)
+
+    def display_menu(self):
+        self.run_display = True
+        while self.run_display:
+            self.game.user_input()
+            if self.game.START_KEY or self.game.BACK_KEY:
+                self.game.curr_menu = self.game.main_menu
+                self.run_display = False
+            self.game.display.fill(self.game.BLACK)
+            self.game.draw_text('Credits', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
+            self.game.draw_text('Sarim, Faizaan and Ninghan', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 10)
+            self.blit_screen()
+          
+
+
+
+
+
+
+
+
+

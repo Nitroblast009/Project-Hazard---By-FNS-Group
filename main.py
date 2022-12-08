@@ -3,6 +3,13 @@ import time
 
 from constants import *
 from game_board import *
+from mainscreen import Game
+
+#g = Game()
+
+#while g.running:
+    #g.curr_menu.display_menu()
+    #g.game_loop()
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
@@ -78,10 +85,33 @@ while running:
           selectedCountry.troops += 2
           selectedCountryName = selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"
           
-          gamePhase = "FORTIFY"
+          gamePhase = "ATTACK"
           selectedCountryName = "None"
           confirm = False
           checkGameBoard("All", (0, 0), playerTurn)
+
+        elif gamePhase == "ATTACK" and selectedCountry != None and confirm2 == False:
+          confirm2 = True
+          baseCountry = selectedCountry
+
+          checkGameBoard("All", (0, 0), playerTurn)
+          selectedCountry = None
+          selectedCountryName = "None"
+          confirm = False
+          playerTurn = "p1" if playerTurn == "p2" else "p2"
+
+        elif gamePhase == "ATTACK" and selectedCountry != None and confirm2 and selectedCountry != baseCountry and selectedCountry.name in baseCountry.neighbours:
+          confirm2 = False
+          playerTurn = "p1" 
+        #add attack function here
+
+          checkGameBoard("All", (0, 0), playerTurn)
+          selectedCountry = None
+          selectedCountryName = "None"
+          confirm = False
+          
+          gamePhase = "FORTIFY"
+          
           
         elif gamePhase == "FORTIFY" and selectedCountry != None and confirm2 == False:
           confirm2 = True
@@ -94,7 +124,7 @@ while running:
 
         elif gamePhase == "FORTIFY" and selectedCountry != None and confirm2 and selectedCountry != baseCountry and selectedCountry.name in baseCountry.neighbours:
           confirm2 = False
-          foritfy(baseCountry, selectedCountry)
+          fortify(baseCountry, selectedCountry)
 
           checkGameBoard("All", (0, 0), playerTurn)
           selectedCountry = None
@@ -103,6 +133,13 @@ while running:
 
           gamePhase = "DRAFT"
           playerTurn = "p1" if playerTurn == "p2" else "p2"
-          
+
+
+
+
+
+
+
+            
         
   pygame.display.update()
