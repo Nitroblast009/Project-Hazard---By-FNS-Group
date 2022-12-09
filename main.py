@@ -1,6 +1,5 @@
 import pygame
 import time
-
 from constants import *
 from game_board import *
 from mainscreen import Game
@@ -104,7 +103,7 @@ while running:
         elif gamePhase == "ATTACK" and selectedCountry != None and confirm2 and selectedCountry != baseCountry and selectedCountry.name in baseCountry.neighbours:
           confirm2 = False
           playerTurn = "p1" if playerTurn == "p2" else "p2"
-          attack(baseCountry)
+          attack(selectedCountry,baseCountry)
           checkGameBoard("All", (0, 0), playerTurn)
           selectedCountry = None
           selectedCountryName = "None"
