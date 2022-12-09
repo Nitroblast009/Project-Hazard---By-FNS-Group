@@ -13,7 +13,8 @@ class Game():
         #Create window for user
         #background = pygame.image.load(background.png)
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
-        self.font_name = pygame.font.get_default_font()
+        #self.font_name = pygame.font.get_default_font()
+        self.font_name = pygame.font.Font('freesansbold.ttf',52)
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.main_menu = MainMenu(self)
         self.settings = SettingsMenu(self)

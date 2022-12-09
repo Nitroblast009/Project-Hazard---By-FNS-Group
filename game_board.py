@@ -139,15 +139,15 @@ def fortify(baseCountry, targetCountry):
   targetCountry.troops += baseCountry.troops - 1
   baseCountry.troops = 1
   
-def attack(player,attackCountry):
+def attack(attackCountry):
     if attackCountry.troops > country.selectedCountry.troops:
         country.selectedCountry.troops - attackCountry.troops
-    if country.selectedCountry.troops <= 0:
-        if player == "p1":
-            country.selectedCountry.player == "p2"
-        if player == "p2":
-            country.selectedCountry.player == "p1"
-            
+        if country.selectedCountry.troops <= 0:
+            if attackCountry.player == "p1":
+                print(attackCountry)
+                country.selectedCountry.player == "p2"
+            if attackCountry.player == "p2":
+                country.selectedCountry.player == "p1"        
 
         
     
