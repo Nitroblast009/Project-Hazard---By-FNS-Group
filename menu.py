@@ -33,7 +33,7 @@ class MainMenu(Menu):
             self.game.user_input()
             self.check_input()
             self.game.display.fill(self.game.BLACK)
-            self.game.draw_text('Risk', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
+            self.game.draw_text('Hazard', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
             self.game.draw_text("Start", 20, self.startx, self.starty)
             self.game.draw_text("Settings", 20, self.settingsx, self.settingsy)
             self.game.draw_text("Credits", 20, self.creditsx, self.creditsy)

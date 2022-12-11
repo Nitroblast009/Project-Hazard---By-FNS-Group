@@ -11,7 +11,7 @@ class Game():
         self.DISPLAY_W, self.DISPLAY_H = 800, 600
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         #Create window for user
-        self.background = pygame.image.load("Menu Bckgrnd.png")
+        #self.background = pygame.image.load("Menu Bckgrnd.png")
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
         self.font_name = pygame.font.get_default_font()
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
@@ -24,14 +24,9 @@ class Game():
         while self.playing:
             self.user_input()
             if self.START_KEY:
-                self.playing= False
-            #Reset screen
-            self.display.fill(self.BLACK)
-            self.draw_text('Thanks for Playing', 20, self.DISPLAY_W/2, self.DISPLAY_H/2)
-            #New display//New frame
-            self.window.blit(self.display, (0,0))
-            pygame.display.update()
-            self.default_keys()
+              self.running, self.playing = False, False
+              self.curr_menu.run_display = False
+
 
     def user_input(self):
         for input in pygame.event.get():

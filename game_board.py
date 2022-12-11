@@ -1,6 +1,7 @@
 import pygame
 from constants import *
 import country
+import random
 
 
 def makeGameBoard(map):
@@ -140,7 +141,6 @@ def fortify(baseCountry, targetCountry):
   baseCountry.troops = 1
   
 def attack(defendCountry,attackCountry):
-    print("hi")
     if attackCountry.troops > defendCountry.troops:
         attackingTroops = attackCountry.troops 
         defendingTroops = defendCountry.troops
@@ -148,10 +148,23 @@ def attack(defendCountry,attackCountry):
         if defendingTroops <= 0:
             if attackCountry.player == "p1":
                 defendCountry.player = "p1"
-                print(defendCountry.player)
             elif attackCountry.player == "p2":
                 defendCountry.player = "p2"
-                print(defendCountry.player)
+    
+
+
+
+
+
+                
+    if attackCountry.troops < defendCountry.troops:
+        result =random.randint(1,2)
+        if result == 1:
+            if attackCountry.player == "p1":
+                attackCountry.player = "p2"
+            if attackCountry.player == "p2":
+                attackCountry.player = "p1"
+    
                 
 
         

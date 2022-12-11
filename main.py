@@ -4,12 +4,11 @@ from constants import *
 from game_board import *
 from mainscreen import Game
 
-#g = Game()
-
-#while g.running:
-    #g.curr_menu.display_menu()
-    #g.game_loop()
-
+g = Game()
+while g.running:
+  g.curr_menu.display_menu()
+  g.game_loop()
+   
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Project Hazard")
@@ -22,11 +21,17 @@ confirm = False
 confirm2 = False
 
 while running:
-  screen.fill((255, 99, 51))
+
+  #while g.running:
+  #  g.curr_menu.display_menu()
+  #  g.game_loop()
+   
+  
   # Add main game board
+  screen.fill((255, 99, 51))
   gameBoard = makeGameBoard("All")
   screen.blit(gameBoard, (0,0))
-
+  
   # Selected text
   font = pygame.font.SysFont('arial', 30)
   selectedCountryText = font.render(
