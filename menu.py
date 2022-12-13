@@ -127,10 +127,32 @@ class CharactersMenu(Menu):
             pass
 
 class CreditsMenu(Menu):
+    '''
+    A credits menu object gets created through the aboutUsMenu method
+
+    Attributes
+    ----------
+    game : object
+        This attribute is the game we have created in previous lines of code
+
+    Methods
+    -------
+    aboutUsMenu() -> None
+        Displays the actual about us screen
+    
+    '''
     def __init__(self, game):
         Menu.__init__(self, game)
 
     def display_menu(self):
+        '''
+        This function creates our about us page
+
+        Returns
+        -------
+        None
+
+        '''
         self.run_display = True
         while self.run_display:
             self.game.user_input()
@@ -140,14 +162,8 @@ class CreditsMenu(Menu):
             self.game.display.fill(self.game.BLACK)
             self.game.draw_text('Credits', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
             self.game.draw_text('Sarim, Faizaan and Ninghan', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 10)
+            self.game.draw_text('Our github link: ', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 40)
             self.blit_screen()
           
-
-
-
-
-
-
-
 
 

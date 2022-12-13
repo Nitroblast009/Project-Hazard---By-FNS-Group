@@ -24,8 +24,12 @@ class Game():
   
     def __init__(self):
         '''
-        
-        
+        Constructor which sets screen information, sets default value of keybinds to false, gets default font and sets up background colour. 
+
+
+        Parameters
+	      ----------
+        None
         
         
         '''
@@ -48,7 +52,11 @@ class Game():
       
     def game_loop(self):
         '''
-        
+        Allows the menu screen to be turned on and off
+
+        Parameters
+	      ----------
+        None
         
         '''
         while self.playing:
@@ -59,6 +67,14 @@ class Game():
 
 
     def user_input(self):
+        '''
+        
+        
+        Parameters
+        ----------
+        None
+        
+        '''
         for input in pygame.event.get():
             if input.type == pygame.QUIT:
                 self.running, self.playing = False, False
@@ -74,9 +90,25 @@ class Game():
                     self.UP_KEY = True
 
     def default_keys(self):
+        '''
+        
+        
+        
+        
+        '''
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
 
-    def draw_text(self, text, size, x, y ):
+    def draw_text(self, text, size, x, y ):  
+        '''
+        Draws the text of the 
+
+        Parameters
+        --------
+        None
+        
+        
+        
+        '''
         font = pygame.font.Font(self.font_name,size)
         text_surface = font.render(text, True, self.WHITE)
         text_rect = text_surface.get_rect()

@@ -144,12 +144,4 @@ while running:
             gamePhase = "DRAFT"
             playerTurn = "p2" if playerTurn == "p1" else "p1"
 
-
-
-#issue in main player 2 cannot fortify
-
-
-
-            
-        
   pygame.display.update()
