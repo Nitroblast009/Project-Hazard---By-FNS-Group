@@ -15,7 +15,7 @@ Alberta = Country("Alberta", ((80, 120), (70, 240), (160, 110)), random.choice([
 Ontario = Country("Ontario", ((160, 110), (70, 240), (160, 230)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Alberta","Quebec","Mexico"])
 Quebec = Country("Quebec", ((160, 110), (160, 230), (230, 190)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["PEI","Ontario"])
 PEI = Country("PEI", ((160, 110), (230, 190), (250, 140)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Newfoundland","Quebec"])
-Newfoundland = Country("Newfoundland", ((220, 80), (190, 120), (250, 140)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["PEI"])
+Newfoundland = Country("Newfoundland", ((220, 80), (190, 120), (250, 140)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["PEI","Greenland"])
 
 Mexico = Country("Mexico", ((70, 240), (150, 330), (140, 230)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Ontario","Caribbeans","Ecuador","Columbia"])
 Caribbeans = Country("Caribbeans", ((160, 290), (180, 310), (190, 270)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Mexico","Columbia"])

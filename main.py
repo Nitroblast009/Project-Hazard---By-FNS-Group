@@ -12,6 +12,8 @@ while g.running:
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Project Hazard")
+map = "All"
+
 selectedCountry = None
 selectedCountryName = "None"
 playerTurn = "p1"
@@ -20,16 +22,10 @@ running = True
 confirm = False
 confirm2 = False
 
-while running:
-
-  #while g.running:
-  #  g.curr_menu.display_menu()
-  #  g.game_loop()
-   
-  
+while running:  
   # Add main game board
   screen.fill((255, 99, 51))
-  gameBoard = makeGameBoard("All")
+  gameBoard = makeGameBoard(map)
   screen.blit(gameBoard, (0,0))
   
   # Selected text
@@ -68,7 +64,7 @@ while running:
           mouseX, mouseY = pygame.mouse.get_pos()
 
           selectedCountry = checkGameBoard(
-              "All", (mouseX, mouseY), playerTurn)
+              map, (mouseX, mouseY), playerTurn)
           
           if selectedCountry != None:
             selectedCountryName = selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"
@@ -92,13 +88,13 @@ while running:
           gamePhase = "ATTACK"
           selectedCountryName = "None"
           confirm = False
-          checkGameBoard("All", (0, 0), playerTurn)
+          checkGameBoard(map, (0, 0), playerTurn)
 
         elif gamePhase == "ATTACK" and selectedCountry != None and confirm2 == False:
           confirm2 = True
           baseCountry = selectedCountry
 
-          checkGameBoard("All", (0, 0), playerTurn)
+          checkGameBoard(map, (0, 0), playerTurn)
           selectedCountry = None
           selectedCountryName = "None"
           confirm = False
@@ -109,7 +105,7 @@ while running:
           confirm2 = False
           playerTurn = "p1" if playerTurn == "p2" else "p2"
           attack(selectedCountry,baseCountry)
-          checkGameBoard("All", (0, 0), playerTurn)
+          checkGameBoard(map, (0, 0), playerTurn)
           selectedCountry = None
           selectedCountryName = "None"
           confirm = False
@@ -120,7 +116,7 @@ while running:
           confirm2 = True
           baseCountry = selectedCountry
 
-          checkGameBoard("All", (0, 0), playerTurn)
+          checkGameBoard(map, (0, 0), playerTurn)
           selectedCountry = None
           selectedCountryName = "None"
           confirm = False
@@ -129,13 +125,24 @@ while running:
           confirm2 = False
           fortify(baseCountry, selectedCountry)
 
-          checkGameBoard("All", (0, 0), playerTurn)
+          checkGameBoard(map, (0, 0), playerTurn)
           selectedCountry = None
           selectedCountryName = "None"
           confirm = False
 
-          gamePhase = "DRAFT"
-          playerTurn = "p2" if playerTurn == "p1" else "p1"
+          if(checkGameWin(map)):
+            screen.fill((255, 99, 51))
+            font = pygame.font.SysFont('arial', 30)
+            selectedCountryText = font.render(playerTurn + " won! Re-run game to play again...", True, "black")
+            selectedCountryRect = selectedCountryText.get_rect()
+            selectedCountryRect.center = (380, 200)
+            screen.blit(selectedCountryText, selectedCountryRect)
+            pygame.display.update()
+
+            running = False
+          else:
+            gamePhase = "DRAFT"
+            playerTurn = "p2" if playerTurn == "p1" else "p1"
 
 
 

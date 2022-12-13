@@ -3,6 +3,20 @@ from constants import white
 pygame.init()
 
 def aboutUs(screen):
+    '''
+    This function creates our about us page
+
+    Parameters
+    ----------
+    screen : pygame.surface 
+        The screen the about us page resides in
+
+
+    Returns
+    -------
+    None
+
+    '''
     font = pygame.font.SysFont('arial', 50)
     text = font.render('About us', True, white)
     font2 = pygame.font.SysFont('arial', 15)
@@ -16,17 +30,7 @@ def aboutUs(screen):
     screen.blit(text3, (35, 125))
     screen.blit(text4, (35, 150))
 
-
-
-
-
-
-
-
-    
     pygame.display.update()
 
     
-
-
 pygame.quit()

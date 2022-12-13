@@ -2,7 +2,33 @@ import pygame
 from menu import *
 
 class Game():
+    '''
+    An object that contains the main screen information, game loop, user input, and draws texts 
+    
+    Attributes
+    -------
+    None
+
+    Methods
+    -------
+    __init__() -> None
+      Creates display, creates window for user, sets keybinds to false
+    game_loop() -> None
+      Turns menu off and takes to main game
+    user_input() -> None
+      Takes user input when a button is pressed
+    default_keys() -> None
+      Sets default value for keys as false
+    draw_text() -> None
+    '''
+  
     def __init__(self):
+        '''
+        
+        
+        
+        
+        '''
         pygame.init()
         self.running, self.playing = True, False
         #Default values for keyboard binds
@@ -16,11 +42,15 @@ class Game():
         self.font_name = pygame.font.get_default_font()
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.main_menu = MainMenu(self)
-        self.settings = SettingsMenu(self)
+        self.characters = CharactersMenu(self)
         self.credits = CreditsMenu(self)
         self.curr_menu = self.main_menu
       
     def game_loop(self):
+        '''
+        
+        
+        '''
         while self.playing:
             self.user_input()
             if self.START_KEY:

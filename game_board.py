@@ -5,17 +5,21 @@ import random
 
 
 def makeGameBoard(map):
+    '''
+    This function is used to create the gameboard. There are several maps including the Americas, Afroeurasia or all. These can be changed in the map parameter.
+
+    Parameters
+    ----------
+    map : string
+        Which map the player wants to play on (All, Americas, Afroeurasia)
+
+    Returns
+    -------
+    pygame.surface : Returns the gameboard object that enables the game to run
+    
+    '''
     gameBoard = pygame.Surface((650, 600))
     gameBoard.fill("white")
-
-    """ Gridlines:
-    for i in range(7):
-        pygame.draw.rect(gameBoard, "black", (i * 100, 0, 1, 600))
-
-    for i in range(6):
-        pygame.draw.rect(gameBoard, "black", (0, i * 100, 700, 1))
-    """
-   
 
     if map == "All" or map == "Americas":
         Greenland.draw(gameBoard)
@@ -76,6 +80,23 @@ def makeGameBoard(map):
 
 
 def checkGameBoard(map, mouse, playerTurn):
+    '''
+    This function checks the gameboard using the mouse input, player turn and the gameboard object.
+
+    Parameters
+    ----------
+    map : string
+        Which map the player wants to play on (All, Americas, Afroeurasia)
+    mouse : tuple
+        What coordinate the mouse is starting at
+    playerTurn : string 
+        Which player's turn it is when the function is called 
+
+    Returns
+    -------
+    country object : Returns the country object that is selected by the player
+    
+    '''
     if country.selectedCountry != None:
         country.selectedCountry.selected = False
         country.selectedCountry = None
@@ -134,28 +155,86 @@ def checkGameBoard(map, mouse, playerTurn):
 
     return country.selectedCountry
 
+def checkGameWin(map):
+    '''
+    This function checks the map to see if a player has won the game
+
+    Parameters
+    ----------
+    map : string
+        Which map the player wants to play on (All, Americas, Afroeurasia)
+    
+    Returns
+    -------
+    boolean : Returns True or False indicating the player has either won or has not won yet
+    
+    '''
+    if map == "All" or map == "Americas":
+      americasWon = Greenland.player == Nuvuk.player ==  Alaska.player ==  Northwest.player ==  BritishColumbia.player ==  Nunavut.player ==  Alberta.player ==  Ontario.player ==  Newfoundland.player ==  Quebec.player ==  PEI.player == Mexico.player ==  Caribbeans.player == Ecuador.player ==  Columbia.player ==  Venezuela.player ==  Peru.player ==  Brazil.player ==  Chile.player ==  Argentina.player
+      
+      if map == "Americas": return americasWon
+  
+    if map == "All" or map == "Afroeurasia":
+        afroeurasiaWon = UK.player ==  France.player ==  Germany.player ==  Scandinavia.player ==  Ukraine.player == Turkey.player ==  Egypt.player ==  Nigeria.player ==  Ethiopia.player ==  SaudiArabia.player ==  Madagascar.player == Siberia.player ==  FarEast.player ==  China.player ==  Korea.player == India.player ==  Japan.player == Indonesia.player ==  Philippines.player ==  Australia.player ==  NewZealand.player
+    if map == "Afroeurasia": return afroeurasiaWon
+
+  
+    if americasWon and afroeurasiaWon: return True
+    return False
+
 # GAME PHASE FUNCTIONS
   
 def fortify(baseCountry, targetCountry):
-  targetCountry.troops += baseCountry.troops - 1
-  baseCountry.troops = 1
+    '''
+    This function is used during the fortify phase of the game, this function moves troops from one country to another.
+
+    Parameters
+    ----------
+    baseCountry : country object
+        The country that the troops are getting removed from
+    targetCountry : country object
+        The country that the troops are moving to
+
+    Returns
+    -------
+    None
+
+    '''
+    targetCountry.troops += baseCountry.troops - 1
+    baseCountry.troops = 1
   
 def attack(defendCountry,attackCountry):
+    '''
+    This function is used during the attack phase of the game, this function subtracts troops from the attacking and defending country to determine the winner
+
+    Parameters
+    ----------
+    defendCountry : country object
+        The country that is defending the attack
+    attackCountry : country object
+        The country that is attacking the opposing country 
+
+    Returns
+    -------
+    None
+
+    '''
     if attackCountry.troops > defendCountry.troops:
         attackingTroops = attackCountry.troops 
         defendingTroops = defendCountry.troops
+        difference = attackingTroops - defendingTroops
         defendingTroops -= attackingTroops
         if defendingTroops <= 0:
             if attackCountry.player == "p1":
                 defendCountry.player = "p1"
+                attackCountry.troops = difference
+                attackCountry.troops -= 1
+                defendCountry.troops = 1
             elif attackCountry.player == "p2":
                 defendCountry.player = "p2"
-    
-
-
-
-
-
+                attackCountry.troops = difference
+                attackCountry.troops -= 1
+                defendCountry.troops = 1
                 
     if attackCountry.troops < defendCountry.troops:
         result =random.randint(1,2)
@@ -165,15 +244,3 @@ def attack(defendCountry,attackCountry):
             if attackCountry.player == "p2":
                 attackCountry.player = "p1"
     
-                
-
-        
-    
-
-
-
-
-    
-#     minus troops and change colour of countries here
-#     gets called from main, and under mouse click state if current gamephase == attackPhase, set coutnry that is getting attacked as another mouseclick, pass that into this function and this function changes the colour and troop count
-
