@@ -24,7 +24,7 @@ class Game():
   
     def __init__(self):
         '''
-        Constructor which sets screen information, sets default value of keybinds to false, gets default font and sets up background colour. 
+        Constructor which sets screen information, sets default value of keybinds to false, gets font and sets up background colour. 
 
 
         Parameters
@@ -68,7 +68,7 @@ class Game():
 
     def user_input(self):
         '''
-        
+        Registers the user input, when a button is pressed
         
         Parameters
         ----------
@@ -90,8 +90,12 @@ class Game():
                     self.UP_KEY = True
 
     def default_keys(self):
-        '''
-        
+        '''  
+        Set keybinds to false 
+
+        Parameters
+        --------
+        None
         
         
         
@@ -100,13 +104,18 @@ class Game():
 
     def draw_text(self, text, size, x, y ):  
         '''
-        Draws the text of the 
+        Draws text with the text, its size and position on the screen.
 
         Parameters
         --------
-        None
-        
-        
+        text : str
+          the desired text 
+        size :  int
+          The size of the text
+        x : int
+          The position of the text on the x-axis
+        y : int
+          The position of the text on the y-axis
         
         '''
         font = pygame.font.Font(self.font_name,size)
