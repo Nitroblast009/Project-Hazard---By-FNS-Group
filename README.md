@@ -102,4 +102,4 @@ It is also important to note that once a game has started it cannot end unless a
 Using a web browser, located your way onto the Itch.io website and search for the game called "Hazard" (https://risky-fns.itch.io/hazard). Once located, click on the pink "Download button". This will download a zip file with all the needed component to run the game.
 
 ## Playing on Local Computer
-After downloading the needed components, extract the files into your replit and click the run button. Just like that, you're ready to play :D
+After downloading the needed components, extract the files into replit and click the run button. Just like that, you're ready to play :D
