@@ -3,12 +3,15 @@
 *Code by Fazaan, Sarim, and Ninghan.*
 *Art by Janna and Nouran.*
 
-  * [Introduction](#introduction)
-    + [Project Description](#project-description)
-    + [Computer Requirements](#computer-requirements)
+- [Introduction](#introduction)
+    * [Project Description](#project-description)
+    * [Computer Requirements](#computer-requirements)
 - [Help Documentation](#help-documentation)
   * [Getting Started](#getting-started)
   * [Main Gameboard](#main-gameboard)
+    + [Americas Map](#americas-map)
+    + [Afroeurasia Map](#afroeurasia-map)
+    + [All Map](#all-map)
   * [Game Phases](#game-phases)
   * [Winning and Miscellaneous](#winning-and-miscellaneous)
 - [Installation Instructions](#installation-instructions)
@@ -16,6 +19,7 @@
   * [Playing on Local Computer](#playing-on-local-computer)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 ---
 ## Introduction
@@ -41,7 +45,7 @@ The following serves as an aid for new users with how to play our game. For raw 
 
 When you first open the game you will be greeted to the following menu screen, where you can move the cursor up and down using the UP and DOWN arrow keys. To select an item hit ENTER.
 
-![menu screen]()
+![menu screen](https://github.com/Nitroblast009/Project-Hazard---By-FNS-Group/blob/main/menu%20screen.png)
 
 If you are selecting the **Start** option, you will need to hit ENTER twice to confirm that you are ready to start the game.
 
@@ -51,11 +55,14 @@ Selecting **Credits** will take you to our About Us page, where you can read mor
 
 ## Main Gameboard
 
-Upon selecting **Start**, you will be taken to the main gameboard where you will play on your selected map. The current 3 maps available to play on are the *Americas*, *Afroeurasia*, and *All*. Images of maps below in respective order...
+Upon selecting **Start**, you will be taken to the main gameboard where you will play on your selected map. The current 3 maps available to play on are the *Americas*, *Afroeurasia*, and *All*. Images of our maps below in respective order...
 
-![americas map]()
-![afroeurasia map]()
-![all map]()
+### Americas Map
+![americas map](https://github.com/Nitroblast009/Project-Hazard---By-FNS-Group/blob/main/americas%20map.png)
+### Afroeurasia Map
+![afroeurasia map](https://github.com/Nitroblast009/Project-Hazard---By-FNS-Group/blob/main/afroeurasia%20map.png)
+### All Map
+![all map](https://github.com/Nitroblast009/Project-Hazard---By-FNS-Group/blob/main/all%20map.png)
 
 > Note: Even though our game is capable of supporting multiple maps, there is no UI option to select which map you want to play on. To change which map the game should be set to, change the `map` variable at the beginning of `main.py` to either "All", "Americas", or "Afroeurasia". 
 
@@ -83,11 +90,11 @@ Each player's turn is divided into three phases in the following order...
 
 To win the game, a player must own all countries on the map. This is checked at the end of each **Fortify Phase** and if a winner has been found, the following winning screen will pop up...
 
-![win screen]()
+![win screen](https://github.com/Nitroblast009/Project-Hazard---By-FNS-Group/blob/main/win%20screen.png)
 
 It is also important to note that once a game has started it cannot end unless a player wins or the game window is forcefully quitted. For the time being, it is also impossible to unselect a country, meaning that if you select a country to attack with that has no neighbouring enemy countries, you have essentially soft-locked yourself. Lastly, all maps in this game are based on real world maps of the Earth, however the geography and nomenclature of countries have been somewhat simplified due to our project's constraints. Below is a hollowed image of the "All" map...
 
-![all map hollow]()
+![all map hollow](https://github.com/Nitroblast009/Project-Hazard---By-FNS-Group/blob/main/Project%20Hazard%20World%20Map%20Outline%20-%20CS.G12S1%20(1).png)
 
 # Installation Instructions
 
