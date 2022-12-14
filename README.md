@@ -39,7 +39,7 @@ An internet connection is required to play our game on itch.io. If downloading p
 
 The following serves as an aid for new users with how to play our game. For raw code documentation, please look through our python scripts in this repository (start at `game_board.py`). For any follow-up inquiries or concerns, please feel free to email 736971@pdsb.net. 
 
-> Video demonstration link: (add link here Ninghan)
+> [Video demonstration link](https://drive.google.com/file/d/1e4ZtcCoeQs-86lmj2cSRGgAxtWybpeBF/view?usp=sharing)
 
 ## Getting Started
 
