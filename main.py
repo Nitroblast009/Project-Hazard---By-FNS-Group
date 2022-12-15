@@ -3,16 +3,26 @@ import time
 from constants import *
 from game_board import *
 from mainscreen import Game
+from menu import Menu
+
+global highscore
+
+with open('highscores.txt', 'r') as file:
+    highscoreList = []
+    highscoresLines = file.readlines()
+    for line in highscoresLines:
+        highscoreList.append(line)
+    highscore = min(highscoreList)
+
 
 g = Game()
 while g.running:
   g.curr_menu.display_menu()
   g.game_loop()
-   
+
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Project Hazard")
-map = "All"
 
 selectedCountry = None
 selectedCountryName = "None"
@@ -22,10 +32,12 @@ running = True
 confirm = False
 confirm2 = False
 
-while running:  
+startTime = time.time()
+
+while running:
   # Add main game board
   screen.fill((255, 99, 51))
-  gameBoard = makeGameBoard(map)
+  gameBoard = makeGameBoard(Menu.map)
   screen.blit(gameBoard, (0,0))
   
   # Selected text
@@ -58,13 +70,14 @@ while running:
   screen.blit(playerTurnText, playerTurnRect)
   screen.blit(confirmText, confirmRect)
   screen.blit(gamePhaseText, gamePhaseRect)
+  
 
   for event in pygame.event.get():
       if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
           mouseX, mouseY = pygame.mouse.get_pos()
 
           selectedCountry = checkGameBoard(
-              map, (mouseX, mouseY), playerTurn)
+              Menu.map, (mouseX, mouseY), playerTurn)
           
           if selectedCountry != None:
             selectedCountryName = selectedCountry.name + " (" + str(country.selectedCountry.troops) + ")"
@@ -88,13 +101,13 @@ while running:
           gamePhase = "ATTACK"
           selectedCountryName = "None"
           confirm = False
-          checkGameBoard(map, (0, 0), playerTurn)
+          checkGameBoard(Menu.map, (0, 0), playerTurn)
 
         elif gamePhase == "ATTACK" and selectedCountry != None and confirm2 == False:
           confirm2 = True
           baseCountry = selectedCountry
 
-          checkGameBoard(map, (0, 0), playerTurn)
+          checkGameBoard(Menu.map, (0, 0), playerTurn)
           selectedCountry = None
           selectedCountryName = "None"
           confirm = False
@@ -105,7 +118,7 @@ while running:
           confirm2 = False
           playerTurn = "p1" if playerTurn == "p2" else "p2"
           attack(selectedCountry,baseCountry)
-          checkGameBoard(map, (0, 0), playerTurn)
+          checkGameBoard(Menu.map, (0, 0), playerTurn)
           selectedCountry = None
           selectedCountryName = "None"
           confirm = False
@@ -116,7 +129,7 @@ while running:
           confirm2 = True
           baseCountry = selectedCountry
 
-          checkGameBoard(map, (0, 0), playerTurn)
+          checkGameBoard(Menu.map, (0, 0), playerTurn)
           selectedCountry = None
           selectedCountryName = "None"
           confirm = False
@@ -125,22 +138,28 @@ while running:
           confirm2 = False
           fortify(baseCountry, selectedCountry)
 
-          checkGameBoard(map, (0, 0), playerTurn)
+          checkGameBoard(Menu.map, (0, 0), playerTurn)
           selectedCountry = None
           selectedCountryName = "None"
           confirm = False
 
-          if(checkGameWin(map)):
+          if(checkGameWin(Menu.map)):
             screen.fill((255, 99, 51))
             font = pygame.font.SysFont('arial', 30)
-            selectedCountryText = font.render(playerTurn + " won! Re-run game to play again...", True, "black")
+            selectedCountryText = font.render(playerTurn + f" won! Time Highscore: {str(highscore)[:-1]}", True, "black")
             selectedCountryRect = selectedCountryText.get_rect()
             selectedCountryRect.center = (380, 200)
             screen.blit(selectedCountryText, selectedCountryRect)
             pygame.display.update()
 
-            running = False
-          else:
+            endTime = time.time()
+            
+            with open ('highscores.txt', 'a') as file:
+              file.write(str(endTime - startTime)) 
+              
+
+          running = False
+        else:
             gamePhase = "DRAFT"
             playerTurn = "p2" if playerTurn == "p1" else "p1"
 

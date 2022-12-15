@@ -1,6 +1,8 @@
 import pygame
+from game_board import *
 
 class Menu():
+    map = "All"
     '''
     An object that contains the main screen information, game loop, user input, and draws texts 
     
@@ -79,7 +81,7 @@ class MainMenu(Menu):
     '''
     def __init__(self, game):
         '''
-        Constructor to the character main screen object
+        Constructor to the map main screen object
 
         Parameters
         ----------
@@ -90,7 +92,7 @@ class MainMenu(Menu):
         Menu.__init__(self, game)
         self.state = "Start"
         self.startx, self.starty = self.mid_w, self.mid_h + 30
-        self.charactersx, self.charactersy = self.mid_w, self.mid_h + 50
+        self.mapsx, self.mapsy = self.mid_w, self.mid_h + 50
         self.creditsx, self.creditsy = self.mid_w, self.mid_h + 70
         self.cursor_rect.midtop = (self.startx + self.distance, self.starty)
 
@@ -108,13 +110,12 @@ class MainMenu(Menu):
             self.game.user_input()
             self.check_input()
             self.game.display.fill(self.game.BLACK)
-            self.game.draw_text('Hazard', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
+            self.game.draw_text('Hazard', 20, self.game.DISPLAY_W / 2,       self.game.DISPLAY_H / 2 - 20)
             self.game.draw_text("Start", 20, self.startx, self.starty)
-            self.game.draw_text("Characters", 20, self.charactersx, self.charactersy)
+            self.game.draw_text("Maps", 20, self.mapsx, self.mapsy)
             self.game.draw_text("Credits", 20, self.creditsx, self.creditsy)
             self.draw_cursor()
             self.blit_screen()
-
 
     def move_cursor(self):
         '''
@@ -127,9 +128,9 @@ class MainMenu(Menu):
         '''
         if self.game.DOWN_KEY:
             if self.state == 'Start':
-                self.cursor_rect.midtop = (self.charactersx + self.distance, self.charactersy)
-                self.state = 'Characters'
-            elif self.state == 'Characters':
+                self.cursor_rect.midtop = (self.mapsx + self.distance, self.mapsy)
+                self.state = 'Maps'
+            elif self.state == 'Maps':
                 self.cursor_rect.midtop = (self.creditsx + self.distance, self.creditsy)
                 self.state = 'Credits'
             elif self.state == 'Credits':
@@ -139,12 +140,12 @@ class MainMenu(Menu):
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.creditsx + self.distance, self.creditsy)
                 self.state = 'Credits'
-            elif self.state == 'Characters':
+            elif self.state == 'Maps':
                 self.cursor_rect.midtop = (self.startx + self.distance, self.starty)
                 self.state = 'Start'
             elif self.state == 'Credits':
-                self.cursor_rect.midtop = (self.charactersx + self.distance, self.charactersy)
-                self.state = 'Characters'
+                self.cursor_rect.midtop = (self.mapsx + self.distance, self.mapsy)
+                self.state = 'Maps'
 
     def check_input(self):
         '''
@@ -159,13 +160,13 @@ class MainMenu(Menu):
         if self.game.START_KEY:
             if self.state == 'Start':
                 self.game.playing = True
-            elif self.state == 'Characters':
-                self.game.curr_menu = self.game.characters
+            elif self.state == 'Maps':
+                self.game.curr_menu = self.game.maps
             elif self.state == 'Credits':
                 self.game.curr_menu = self.game.credits
             self.run_display = False
 
-class CharactersMenu(Menu):
+class MapsMenu(Menu):
     '''
     Character menu object is created 
     
@@ -193,10 +194,11 @@ class CharactersMenu(Menu):
     
         '''
         Menu.__init__(self, game)
-        self.state = 'Snake'
-        self.snakex, self.snakey = self.mid_w, self.mid_h + 20
-        self.kangaroox, self.kangarooy = self.mid_w, self.mid_h + 100
-        self.cursor_rect.midtop = (self.snakex + self.distance, self.snakey)
+        self.state = 'All'
+        self.allx, self.ally = self.mid_w, self.mid_h + 20
+        self.afroeurasiax, self.afroeurasiay = self.mid_w, self.mid_h + 50
+        self.americasx, self.americasy = self.mid_w, self.mid_h + 80
+        self.cursor_rect.midtop = (self.allx + self.distance, self.ally)
 
     def display_menu(self):
         '''
@@ -212,15 +214,16 @@ class CharactersMenu(Menu):
             self.game.user_input()
             self.check_input()
             self.game.display.fill((0, 0, 0))
-            self.game.draw_text('Characters [Coming Out in Patch 1.01]', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 30)
-            self.game.draw_text("Snake", 20, self.snakex, self.snakey)
-            self.game.draw_text("Kangaroo", 20, self.kangaroox, self.kangarooy)
+            self.game.draw_text('Maps', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 30)
+            self.game.draw_text("All", 20, self.allx, self.ally)
+            self.game.draw_text("Afroeurasia", 20, self.afroeurasiax, self.afroeurasiay)
+            self.game.draw_text("Americas", 20, self.americasx, self.americasy)
             self.draw_cursor()
             self.blit_screen()
 
     def check_input(self):
         '''
-        This method checks the mouse to see which character was chosen
+        This method swithes between which map you want to chose
 
         Returns
         -------
@@ -231,13 +234,22 @@ class CharactersMenu(Menu):
             self.game.curr_menu = self.game.main_menu
             self.run_display = False
         elif self.game.UP_KEY or self.game.DOWN_KEY:
-            if self.state == 'Snake':
-                self.state = 'Kangaroo'
-                self.cursor_rect.midtop = (self.kangaroox + self.distance, self.kangarooy)
-            elif self.state == 'Kangaroo':
-                self.state = 'Snake'
-                self.cursor_rect.midtop = (self.snakex + self.distance, self.snakey)
+            if self.state == 'All':
+                self.cursor_rect.midtop = (self.afroeurasiax + self.distance, self.afroeurasiay)
+                self.state = 'Afroeurasia'
+            elif self.state == 'Afroeurasia':
+                self.cursor_rect.midtop = (self.americasx + self.distance, self.americasy)
+                self.state = 'Americas'
+            elif self.state == 'Americas':
+                 self.cursor_rect.midtop = (self.allx + self.distance, self.ally)
+                 self.state = 'All'
         elif self.game.START_KEY:
+          Menu.map = self.state
+        
+    
+              
+        elif self.game.START_KEY:
+          
             pass
 
 class CreditsMenu(Menu):

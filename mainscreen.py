@@ -46,7 +46,7 @@ class Game():
         self.font_name = pygame.font.get_default_font()
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.main_menu = MainMenu(self)
-        self.characters = CharactersMenu(self)
+        self.maps = MapsMenu(self)
         self.credits = CreditsMenu(self)
         self.curr_menu = self.main_menu
       
@@ -123,7 +123,3 @@ class Game():
         text_rect = text_surface.get_rect()
         text_rect.center = (x,y)
         self.display.blit(text_surface,text_rect)
-
-
-
-
