@@ -45,11 +45,11 @@ The following serves as an aid for new users with how to play our game. For raw 
 
 When you first open the game you will be greeted to the following menu screen, where you can move the cursor up and down using the UP and DOWN arrow keys. To select an item hit ENTER.
 
-![menu screen](https://github.com/Nitroblast009/Project-Hazard---By-FNS-Group/blob/main/menu%20screen.png)
+![menu screen](https://github.com/Nitroblast009/Project-Hazard---By-FNS-Group/blob/main/usethisimage.PNG)
 
 If you are selecting the **Start** option, you will need to hit ENTER twice to confirm that you are ready to start the game.
 
-Selecting **Characters** will bring you to a menu where you can select which character each player would like to play as. For the time being, selecting your character is purely for aesthetics, but in the future we plan to add character-specific features. Hit BACKSPACE to return to the main screen.
+Selecting **Maps** will bring you to a map menu where you can select which map you would like to play on. After selecting your desired map, press backspace and make your way to the start button. Pressing the enter button twice will take you into the game with your desired map.
 
 Selecting **Credits** will take you to our About Us page, where you can read more about the amazing Grade 12 computer science students behind this game! Hit BACKSPACE to return to the main screen.
 
@@ -64,7 +64,7 @@ Upon selecting **Start**, you will be taken to the main gameboard where you will
 ### All Map
 ![all map](https://github.com/Nitroblast009/Project-Hazard---By-FNS-Group/blob/main/all%20map.png)
 
-> Note: Even though our game is capable of supporting multiple maps, there is no UI option to select which map you want to play on. To change which map the game should be set to, change the `map` variable at the beginning of `main.py` to either "All", "Americas", or "Afroeurasia". 
+> Note: Through the Menu UI, you can locate the map screen. Going into the map screen will allow you to chose from the three maps we offer (Globe, Americas and Afroeuraia) by hovering the arrow over it and pressing the enter key. 
 
 A couple important details about the gameboard:
 - All countries on the map are randomly divided among Player 1 and 2. Red countries belong to Player 1, and blue countries belong to Player 2.
