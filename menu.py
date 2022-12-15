@@ -30,6 +30,7 @@ class Menu():
         None
         
         '''
+      
         self.game = game
         self.mid_w, self.mid_h = self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2
         self.run_display = True
@@ -45,6 +46,7 @@ class Menu():
         None
         
         '''
+      
         self.game.draw_text('>', 15, self.cursor_rect.x, self.cursor_rect.y)
 
     def blit_screen(self):
@@ -56,6 +58,7 @@ class Menu():
         None
         
         '''
+      
         self.game.window.blit(self.game.display, (0, 0))
         pygame.display.update()
         self.game.default_keys()
@@ -79,6 +82,7 @@ class MainMenu(Menu):
         Checks which menu the user has selected
     
     '''
+  
     def __init__(self, game):
         '''
         Constructor to the map main screen object
@@ -105,6 +109,7 @@ class MainMenu(Menu):
         None
 
         '''
+      
         self.run_display = True
         while self.run_display:
             self.game.user_input()
@@ -126,6 +131,7 @@ class MainMenu(Menu):
         None
         
         '''
+      
         if self.game.DOWN_KEY:
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.mapsx + self.distance, self.mapsy)
@@ -156,6 +162,7 @@ class MainMenu(Menu):
         None
 
         '''
+      
         self.move_cursor()
         if self.game.START_KEY:
             if self.state == 'Start':
@@ -168,7 +175,7 @@ class MainMenu(Menu):
 
 class MapsMenu(Menu):
     '''
-    Character menu object is created 
+    Maps menu object is created 
     
     Attributes
     ----------
@@ -180,12 +187,13 @@ class MapsMenu(Menu):
     display_menu() -> None
         Displays the actual about us screen
     check_input() -> None
-        Checks which character was selected 
+        Checks which map was selected 
     
     '''
+  
     def __init__(self, game):
         '''
-        Constructor to the character menu screen object
+        Constructor to the maps menu screen object
 
         Parameters
         ----------
@@ -202,20 +210,21 @@ class MapsMenu(Menu):
 
     def display_menu(self):
         '''
-        Displays the character menu
+        Displays the map menu
 
         Returns
         -------
         None
 
         '''
+      
         self.run_display = True
         while self.run_display:
             self.game.user_input()
             self.check_input()
             self.game.display.fill((0, 0, 0))
             self.game.draw_text('Maps', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 30)
-            self.game.draw_text("All", 20, self.allx, self.ally)
+            self.game.draw_text("Globe", 20, self.allx, self.ally)
             self.game.draw_text("Afroeurasia", 20, self.afroeurasiax, self.afroeurasiay)
             self.game.draw_text("Americas", 20, self.americasx, self.americasy)
             self.draw_cursor()
@@ -230,6 +239,7 @@ class MapsMenu(Menu):
         None
         
         '''
+      
         if self.game.BACK_KEY:
             self.game.curr_menu = self.game.main_menu
             self.run_display = False
@@ -267,6 +277,7 @@ class CreditsMenu(Menu):
         Displays the actual about us screen
     
     '''
+  
     def __init__(self, game):
         '''
         Constructor to build the about us page
@@ -277,6 +288,7 @@ class CreditsMenu(Menu):
             The place the about us page will be put
         
         '''
+      
         Menu.__init__(self, game)
 
     def display_menu(self):
@@ -288,6 +300,7 @@ class CreditsMenu(Menu):
         None
 
         '''
+      
         self.run_display = True
         while self.run_display:
             self.game.user_input()

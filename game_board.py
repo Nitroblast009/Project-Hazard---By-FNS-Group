@@ -94,7 +94,7 @@ def checkGameBoard(map, mouse, playerTurn):
 
     Returns
     -------
-    country object : Returns the country object that is selected by the player
+    country object : Returns the country object that is selected by the player 
     
     '''
     if country.selectedCountry != None:
@@ -167,7 +167,7 @@ def checkGameWin(map):
     Returns
     -------
     boolean : Returns True or False indicating the player has either won or has not won yet
-    
+
     '''
     if map == "All" or map == "Americas":
       americasWon = Greenland.player == Nuvuk.player ==  Alaska.player ==  Northwest.player ==  BritishColumbia.player ==  Nunavut.player ==  Alberta.player ==  Ontario.player ==  Newfoundland.player ==  Quebec.player ==  PEI.player == Mexico.player ==  Caribbeans.player == Ecuador.player ==  Columbia.player ==  Venezuela.player ==  Peru.player ==  Brazil.player ==  Chile.player ==  Argentina.player

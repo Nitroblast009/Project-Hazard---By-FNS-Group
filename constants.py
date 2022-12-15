@@ -51,10 +51,10 @@ India = Country("India", ((410, 190), (500, 300), (540, 210)), random.choice(["p
 Japan = Country("Japan", ((580, 260), (580, 180), (610, 180), (610, 260)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Korea"])
 
 Indonesia = Country(
-    "Indonesia", ((490, 330), (490, 310), (510, 310), (510, 330)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["India"])
+    "Indonesia", ((490, 330), (490, 310), (510, 310), (510, 330)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["India", "Philippines"])
 Philippines = Country(
     "Philippines", ((550, 350), (550, 330), (620, 330), (620, 350)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Australia","Indonesia"])
 Australia = Country(
-    "Australia", ((500, 430), (500, 370), (600, 370), (600, 430)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["New Zealand","Philipines","Indonesia"])
+    "Australia", ((500, 430), (500, 370), (600, 370), (600, 430)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["New Zealand","Philippines","Indonesia"])
 NewZealand = Country(
     "New Zealand", ((570, 470), (570, 440), (620, 440), (620, 470)), random.choice(["p1", "p2"]), random.choice([1,2,2,3,4,5]), ["Australia"])

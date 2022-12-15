@@ -2,7 +2,7 @@ import pygame
 import time
 from constants import *
 from game_board import *
-from mainscreen import Game
+from mainscreen import Mainscreen
 from menu import Menu
 
 global highscore
@@ -15,7 +15,7 @@ with open('highscores.txt', 'r') as file:
     highscore = min(highscoreList)
 
 
-g = Game()
+g = Mainscreen()
 while g.running:
   g.curr_menu.display_menu()
   g.game_loop()
@@ -158,8 +158,8 @@ while running:
               file.write(str(endTime - startTime)) 
               
 
-          running = False
-        else:
+            running = False
+          else:
             gamePhase = "DRAFT"
             playerTurn = "p2" if playerTurn == "p1" else "p1"
 

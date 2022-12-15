@@ -1,7 +1,7 @@
 import pygame
 from menu import *
 
-class Game():
+class Mainscreen():
     '''
     An object that contains the main screen information, game loop, user input, and draws texts 
     
@@ -20,8 +20,9 @@ class Game():
     default_keys() -> None
       Sets default value for keys as false
     draw_text() -> None
+
     '''
-  
+
     def __init__(self):
         '''
         Constructor which sets screen information, sets default value of keybinds to false, gets font and sets up background colour. 
@@ -30,9 +31,8 @@ class Game():
         Parameters
 	      ----------
         None
-        
-        
         '''
+      
         pygame.init()
         self.running, self.playing = True, False
         #Default values for keyboard binds
@@ -59,6 +59,7 @@ class Game():
         None
         
         '''
+      
         while self.playing:
             self.user_input()
             if self.START_KEY:
@@ -75,6 +76,7 @@ class Game():
         None
         
         '''
+      
         for input in pygame.event.get():
             if input.type == pygame.QUIT:
                 self.running, self.playing = False, False
@@ -97,9 +99,8 @@ class Game():
         --------
         None
         
-        
-        
         '''
+      
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
 
     def draw_text(self, text, size, x, y ):  
@@ -116,8 +117,9 @@ class Game():
           The position of the text on the x-axis
         y : int
           The position of the text on the y-axis
-        
+          
         '''
+      
         font = pygame.font.Font(self.font_name,size)
         text_surface = font.render(text, True, self.WHITE)
         text_rect = text_surface.get_rect()
