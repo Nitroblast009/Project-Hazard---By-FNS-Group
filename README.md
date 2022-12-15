@@ -45,7 +45,7 @@ The following serves as an aid for new users with how to play our game. For raw 
 
 When you first open the game you will be greeted to the following menu screen, where you can move the cursor up and down using the UP and DOWN arrow keys. To select an item hit ENTER.
 
-![menu screen](https://github.com/Nitroblast009/Project-Hazard---By-FNS-Group/blob/main/menu%20screen.png)
+![menu screen](https://github.com/Nitroblast009/Project-Hazard---By-FNS-Group/blob/main/usethisimage.PNG)
 
 If you are selecting the **Start** option, you will need to hit ENTER twice to confirm that you are ready to start the game.
 
